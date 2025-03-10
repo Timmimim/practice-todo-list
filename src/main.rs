@@ -7,7 +7,7 @@
  */
 
 use std::env;
-use todo_bin::{help, Todo};
+use practice_todo_list::{help, Todo};
 
 fn main() {
     let todo = Todo::new().expect("Couldn't create the todo instance."); 
@@ -16,7 +16,7 @@ fn main() {
 
     // if more than one argument is given, these are to be handled as commands and (potentially) new ToDo list items
     if args.len() > 1 {
-        let command = &args[1]
+        let command = &args[1];
         match &command[..] {
             "list"  =>  todo.list(),
             "add"   =>  todo.add(&args[2..]),
@@ -24,7 +24,7 @@ fn main() {
             "done"  =>  todo.done(&args[2..]),
             "raw"   =>  todo.raw(&args[2..]),
             "edit"  =>  todo.edit(&args[2..]),
-            "sort"  =>  todo.sort(),
+            "sort"  =>  todo.sort(&args[2..]),
             "reset" =>  todo.reset(),
             "restore" => todo.restore(),
             "help" | "--help" | "-h" | "h" | _ => help(),
